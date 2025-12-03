@@ -7,42 +7,120 @@
 
   <!-- Font Neulis -->
   <style>
-    @font-face { font-family: 'Neulis Menyewa'; src: url('font/Neulis-Regular.woff2') format('woff2'); font-weight:400; font-style:normal; font-display:swap;}
-    @font-face { font-family: 'Neulis Menyewa'; src: url('font/Neulis-SemiBold.woff2') format('woff2'); font-weight:600; font-style:normal; font-display:swap;}
-    body { font-family:'Neulis Menyewa', system-ui, Arial; margin:0; padding:32px; background:#f9fafb; color:#111; }
-    .wrap { max-width:920px; margin:0 auto; }
-    header { display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; }
-    .logo img { height:56px; }
-    .card { background:#fff; padding:26px; border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,0.06); }
-    label { display:block; margin-top:14px; font-weight:600; }
-    input, textarea, select { width:100%; padding:12px 14px; border-radius:10px; border:1px solid #e6e6e6; margin-top:6px; font-size:15px; }
-    textarea { min-height:110px; resize:vertical; }
-    .checkbox-row { display:flex; gap:10px; align-items:center; margin-top:14px; }
-    .submit-btn { margin-top:18px; display:block; width:100%; padding:14px; border-radius:10px; background:#111; color:#fff; border:none; font-weight:700; cursor:pointer; }
+    @font-face { font-family: 'Neulis Menyewa'; src: url('font/Neulis-Regular.woff2') format('woff2'); font-weight:400; }
+    @font-face { font-family: 'Neulis Menyewa'; src: url('font/Neulis-SemiBold.woff2') format('woff2'); font-weight:600; }
+
+    body {
+      font-family:'Neulis Menyewa', system-ui, Arial;
+      margin:0;
+      padding:32px;
+      background:#f9fafb;
+      color:#111;
+    }
+
+    .wrap {
+      max-width:920px;
+      margin:0 auto;
+    }
+
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:28px;
+    }
+
+    .logo img {
+      height:56px;
+    }
+
+    .card {
+      background:#fff;
+      padding:26px;
+      border-radius:14px;
+      box-shadow:0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    h2 {
+      margin:0 0 8px;
+    }
+
+    label {
+      display:block;
+      margin-top:14px;
+      font-weight:600;
+    }
+
+    input, textarea, select {
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e6e6;
+      margin-top:6px;
+      font-size:15px;
+    }
+
+    textarea {
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .checkbox-row {
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:14px;
+    }
+
+    .submit-btn {
+      margin-top:18px;
+      display:block;
+      width:100%;
+      padding:14px;
+      border-radius:10px;
+      background:#111;
+      color:#fff;
+      border:none;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    a {
+      text-decoration:none;
+    }
+
   </style>
 
-  <!-- Keep theme & elementor CSS for consistent styles / animations -->
+  <!-- Theme/Elementor CSS (agar animasi tetap) -->
   <link rel="stylesheet" href="https://www.menyewa.com/wp-content/themes/hub/assets/vendors/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://www.menyewa.com/wp-content/themes/hub/style.css">
   <link rel="stylesheet" href="https://www.menyewa.com/wp-content/plugins/elementor/assets/css/frontend.min.css">
 
-  <!-- core js -->
+  <!-- JS Required -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://www.menyewa.com/wp-content/plugins/elementor/assets/js/frontend.min.js"></script>
 
 </head>
 <body>
+
   <div class="wrap">
+
     <header>
-      <div class="logo"><img src="/Users/fatihahmadrezaelnidzom/blockchain/logo1.png" alt="iRent"></div> <!--GANTI SESUAI LOKASI FILE LOGO1 DI DEVICE KALIAN-->
-      <a href="index.html" style="align-self:center;">Kembali ke Beranda</a>
+      <div class="logo">
+        <img src="/Users/fatihahmadrezaelnidzom/blockchain/logo1.png" alt="iRent"> <!--GANTI SESUAI LOKASI FILE LOGO1 DI DEVICE KALIAN-->
+      </div>
+      <a href="index.html" style="font-weight:600;">Kembali ke Beranda</a>
     </header>
 
     <div class="card">
-      <h2 style="margin:0 0 8px;">Form Booking iPhone</h2>
-      <p style="margin:0 0 18px;color:#666;">Isi data untuk memproses pemesanan. Klik kirim untuk menghubungi admin via WhatsApp.</p>
+
+      <h2>Form Booking iPhone</h2>
+      <p style="margin:0 0 18px;color:#666;">
+        Isi data untuk memproses pemesanan. Tekan kirim untuk menuju WhatsApp admin.
+      </p>
 
       <form id="bookingForm">
+
         <label>Nama</label>
         <input id="nama" type="text" required>
 
@@ -70,53 +148,92 @@
         <label>Durasi Sewa</label>
         <select id="durasi" required>
           <option value="">Pilih Durasi</option>
-          <option value="24 Jam">24 Jam</option>
-          <option value="12 Jam">12 Jam</option>
           <option value="8 Jam">8 Jam</option>
+          <option value="12 Jam">12 Jam</option>
+          <option value="24 Jam">24 Jam</option>
         </select>
+
+        <!-- TOTAL HARGA OTOMATIS -->
+        <p id="totalHarga" style="margin-top:16px; font-weight:700; font-size:18px; color:#111;"></p>
 
         <div class="checkbox-row">
           <input id="agree" type="checkbox" required>
-          <label for="agree" style="margin:0;font-weight:400;">Saya menyetujui seluruh perjanjian yang berlaku</label>
+          <label for="agree" style="margin:0;font-weight:400;">
+            Saya menyetujui seluruh perjanjian yang berlaku
+          </label>
         </div>
 
         <button type="submit" class="submit-btn">Kirim Form</button>
+
       </form>
+
     </div>
   </div>
 
+  <!-- SCRIPT HARGA + SCRIPT BOOKING -->
   <script>
-    // Booking form: kirim pesan via WhatsApp (buka tab baru)
-    (function(){
-      document.getElementById('bookingForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        // Ganti nomor WA tujuan sesuai kebutuhan (format internasional tanpa '+')
-        var nomorWA = "6281222599646";
 
-        var nama = document.getElementById('nama').value.trim();
-        var usia = document.getElementById('usia').value.trim();
-        var alamat = document.getElementById('alamat').value.trim();
-        var nip = document.getElementById('nip').value.trim();
-        var telp = document.getElementById('telp').value.trim();
-        var device = document.getElementById('device').value;
-        var durasi = document.getElementById('durasi').value;
+    // ======================= HARGA DEVICE =========================
+    const hargaTable = {
+      "iPhone 16": { "8 Jam": 200000, "12 Jam": 240000, "24 Jam": 350000 },
+      "iPhone 15": { "8 Jam": 180000, "12 Jam": 220000, "24 Jam": 300000 },
+      "iPhone 14": { "8 Jam": 150000, "12 Jam": 190000, "24 Jam": 260000 },
+      "iPhone 13": { "8 Jam": 130000, "12 Jam": 170000, "24 Jam": 230000 }
+    };
 
-        var pesan = '*Form Booking iRent*%0A%0A' +
-          'Nama: ' + encodeURIComponent(nama) + '%0A' +
-          'Usia: ' + encodeURIComponent(usia) + '%0A' +
-          'Alamat: ' + encodeURIComponent(alamat) + '%0A' +
-          'NIP: ' + encodeURIComponent(nip) + '%0A' +
-          'No Telp: ' + encodeURIComponent(telp) + '%0A' +
-          'Device: ' + encodeURIComponent(device) + '%0A' +
-          'Durasi: ' + encodeURIComponent(durasi) + '%0A%0A' +
-          'Saya menyetujui seluruh perjanjian.';
+    const deviceInput = document.getElementById("device");
+    const durasiInput = document.getElementById("durasi");
+    const totalHargaText = document.getElementById("totalHarga");
 
-        var url = 'https://wa.me/' + nomorWA + '?text=' + pesan;
-        window.open(url, '_blank');
-      });
-    })();
+    function updateHarga() {
+      const device = deviceInput.value;
+      const durasi = durasiInput.value;
+
+      if (device && durasi) {
+        const harga = hargaTable[device][durasi];
+        totalHargaText.textContent = "Total Harga: Rp " + harga.toLocaleString("id-ID");
+      } else {
+        totalHargaText.textContent = "";
+      }
+    }
+
+    // Jalankan otomatis saat memilih
+    deviceInput.addEventListener("change", updateHarga);
+    durasiInput.addEventListener("change", updateHarga);
+
+
+    // ======================= FORM BOOKING WA =========================
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      e.preventDefault();
+
+      let nomorWA = "6281222599646"; // ubah jika diperlukan
+
+      let nama = document.getElementById("nama").value.trim();
+      let usia = document.getElementById("usia").value.trim();
+      let alamat = document.getElementById("alamat").value.trim();
+      let nip = document.getElementById("nip").value.trim();
+      let telp = document.getElementById("telp").value.trim();
+      let device = deviceInput.value;
+      let durasi = durasiInput.value;
+      let total = totalHargaText.textContent.replace("Total Harga: ", "");
+
+      let pesan =
+        "*Form Booking iRent*%0A%0A" +
+        "Nama: " + nama + "%0A" +
+        "Usia: " + usia + "%0A" +
+        "Alamat: " + alamat + "%0A" +
+        "NIP: " + nip + "%0A" +
+        "No Telp: " + telp + "%0A" +
+        "Device: " + device + "%0A" +
+        "Durasi: " + durasi + "%0A" +
+        "Harga: " + total + "%0A%0A" +
+        "Saya menyetujui seluruh perjanjian.";
+
+      let url = "https://wa.me/" + nomorWA + "?text=" + pesan;
+      window.open(url, "_blank");
+    });
+
   </script>
 
 </body>
 </html>
-
